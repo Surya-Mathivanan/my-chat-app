@@ -44,16 +44,16 @@ const ChatPage = ({ user }) => {
 
   return (
     <div
-      className="form"
+      className="userform"
       style={{
         maxWidth: 600,
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "5%",
+        marginTop: "0%",
       }}
     >
       <div className="title">💬 Chat Room</div>
-      <div className="message-list" style={{ height: 350, marginBottom: 10 }}>
+      <div className="message-list" style={{ height: 450, marginBottom: 0 ,marginTop:0}}>
         {messages.map((msg, index) => (
           <Message key={index} message={msg} isOwn={msg.user === user.name} />
         ))}
