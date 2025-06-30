@@ -43,27 +43,37 @@ const ChatPage = ({ user }) => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        <h2 className="chat-header">💬 React Chat App</h2>
-        <div className="message-list">
-          {messages.map((msg, index) => (
-            <Message key={index} message={msg} isOwn={msg.user === user.name} />
-          ))}
-        </div>
+    <div
+      className="form"
+      style={{
+        maxWidth: 600,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "5%",
+      }}
+    >
+      <div className="title">Chat Room</div>
+      <div className="message-list" style={{ height: 350, marginBottom: 10 }}>
+        {messages.map((msg, index) => (
+          <Message key={index} message={msg} isOwn={msg.user === user.name} />
+        ))}
         <div ref={chatEndRef} />
-        <div className="input-container">
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && send()}
-            placeholder="Enter Message"
-            className="chat-input"
-          />
-          <button onClick={send} className="send-button">
-            Send
-          </button>
-        </div>
+      </div>
+      <div
+        className="input-container"
+        style={{ padding: 0, borderTop: "none", background: "none" }}
+      >
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && send()}
+          placeholder="Enter Message"
+          className="input"
+          style={{ marginBottom: 0 }}
+        />
+        <button onClick={send} className="submit" style={{ minWidth: 90 }}>
+          Send
+        </button>
       </div>
     </div>
   );

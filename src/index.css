@@ -25,7 +25,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-color: #ffffff;
 }
 
 /* App Container */
@@ -39,7 +39,7 @@ body {
 /* Chat Container Styles */
 .chat-container {
   width: 100%;
- 
+
   max-width: 600px;
   margin: 0 auto;
   padding: 10px;
@@ -95,7 +95,8 @@ body {
 
 /* Message Bubble Styles */
 .message-bubble {
-  margin: 15px 0;
+  margin: 15px 1px;
+  width: 50%;
   padding: 12px 18px;
   border-radius: 18px;
   max-width: 70%;
@@ -117,8 +118,11 @@ body {
   background: linear-gradient(135deg, #ffffff, #f5f5f5);
   margin-right: auto;
   border-bottom-left-radius: 5px;
-  color: #333;
+  color: #333333;
   border: 1px solid #e0e0e0;
+}
+.other-message .user-label {
+  color: #edf101;
 }
 
 .user-label {
@@ -130,7 +134,7 @@ body {
 }
 
 .my-message .user-label {
-  color: #2e7d32;
+  color: #01266b;
 }
 
 /* Input Container Styles */
@@ -209,14 +213,28 @@ form {
   gap: 15px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  color: #2e4e7d;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  margin-left: 35%;
+  margin-top: 8%;
+}
+
 /* Select Styles */
 select.chat-input {
   cursor: pointer;
-  background: #f8f9fa;
+  background: #146dc5;
 }
 
 select.chat-input:focus {
-  background: white;
+  background: rgb(119, 14, 14);
 }
 
 /* Date Input Styles */
@@ -237,6 +255,115 @@ input[type="date"].chat-input {
   font-size: 14px;
   padding: 0;
   z-index: 2;
+}
+
+/* Title Styles */
+.title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+/* Message and Sign In Styles */
+.message,
+.signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a,
+.signin button {
+  color: royalblue;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline royalblue;
+  padding: 0;
+}
+
+.signin a:hover,
+.signin button:hover {
+  text-decoration: underline royalblue;
+}
+
+/* Flexbox Utility Class */
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+/* Label Styles */
+.form label {
+  position: relative;
+  width: 100%;
+}
+
+/* Input Styles */
+.input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-size: 15px;
+  color: #000000;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.input:disabled {
+  background: #f5f5f5;
+  color: #008d2a;
+}
+
+/* Submit Button Styles */
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
 }
 
 /* Animations */
@@ -262,6 +389,17 @@ input[type="date"].chat-input {
   }
 }
 
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .chat-container {
@@ -273,7 +411,8 @@ input[type="date"].chat-input {
   }
 
   .message-bubble {
-    max-width: 85%;
+    max-width: 100%;
+    width: 100%;
     padding: 10px 15px;
   }
 
@@ -323,6 +462,27 @@ input[type="date"].chat-input {
 
   .chat-input {
     font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .form {
+    margin-left: 5%;
+    margin-top: 40%;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .title::before,
+  .title::after {
+    height: 12px;
+    width: 12px;
+  }
+  .title::before {
+    width: 14px;
+    height: 14px;
+  }
+  .title::after {
+    width: 14px;
+    height: 14px;
   }
 }
 

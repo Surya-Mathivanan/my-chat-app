@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./Firebase"; // Only import auth
+import { auth } from "./Firebase";
 
 const RegisterPage = ({ onRegister, onSwitchToLogin }) => {
   const [name, setName] = useState("");
@@ -36,22 +36,15 @@ const RegisterPage = ({ onRegister, onSwitchToLogin }) => {
     }
 
     try {
-      // Create user with Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       const user = userCredential.user;
-
-      // No Firestore usage here
-
-      console.log("User registered successfully:", user);
       onRegister({ name, email, uid: user.uid });
     } catch (error) {
-      console.error("Registration error:", error);
       let errorMessage = "Registration failed. Please try again.";
-
       switch (error.code) {
         case "auth/email-already-in-use":
           errorMessage = "An account with this email already exists.";
@@ -70,7 +63,6 @@ const RegisterPage = ({ onRegister, onSwitchToLogin }) => {
         default:
           errorMessage = error.message;
       }
-
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -78,145 +70,85 @@ const RegisterPage = ({ onRegister, onSwitchToLogin }) => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        <h2 className="chat-header">Register</h2>
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            padding: "20px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-          }}
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="title">Register</div>
+      {error && <div className="error-message">{error}</div>}
+
+      <label>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+      </label>
+
+      <label>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+      </label>
+
+      <label>
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+        <button
+          type="button"
+          className="password-toggle-btn"
+          onClick={() => setShowPassword((v) => !v)}
+          tabIndex={-1}
         >
-          {error && (
-            <div
-              style={{
-                color: "#f44336",
-                backgroundColor: "#ffebee",
-                padding: "10px",
-                borderRadius: "5px",
-                fontSize: "14px",
-              }}
-            >
-              {error}
-            </div>
-          )}
+          {showPassword ? "Hide" : "Show"}
+        </button>
+      </label>
 
-          <input
-            type="text"
-            placeholder="Full Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="chat-input"
-            style={{ margin: "0" }}
-            disabled={loading}
-          />
+      <label>
+        <input
+          type={showConfirmPassword ? "text" : "password"}
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+        <button
+          type="button"
+          className="password-toggle-btn"
+          onClick={() => setShowConfirmPassword((v) => !v)}
+          tabIndex={-1}
+        >
+          {showConfirmPassword ? "Hide" : "Show"}
+        </button>
+      </label>
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="chat-input"
-            style={{ margin: "0" }}
-            disabled={loading}
-          />
+      <button type="submit" className="submit" disabled={loading}>
+        {loading ? "Creating Account..." : "Register"}
+      </button>
 
-          <div style={{ position: "relative" }}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="chat-input"
-              style={{ margin: "0", paddingRight: "40px" }}
-              disabled={loading}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: "#888",
-                fontSize: "14px",
-                padding: 0,
-              }}
-              tabIndex={-1}
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
-
-          <div style={{ position: "relative" }}>
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-              className="chat-input"
-              style={{ margin: "0", paddingRight: "40px" }}
-              disabled={loading}
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: "#888",
-                fontSize: "14px",
-                padding: 0,
-              }}
-              tabIndex={-1}
-            >
-              {showConfirmPassword ? "Hide" : "Show"}
-            </button>
-          </div>
-
-          <button type="submit" className="send-button" disabled={loading}>
-            {loading ? "Creating Account..." : "Register"}
-          </button>
-
-          <div style={{ textAlign: "center", marginTop: "10px" }}>
-            <span style={{ color: "#666", fontSize: "14px" }}>
-              Already have an account?{" "}
-            </span>
-            <button
-              type="button"
-              onClick={onSwitchToLogin}
-              disabled={loading}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#4CAF50",
-                cursor: "pointer",
-                fontSize: "14px",
-                textDecoration: "underline",
-              }}
-            >
-              Login here
-            </button>
-          </div>
-        </form>
+      <div className="signin">
+        Already have an account?{" "}
+        <button type="button" onClick={onSwitchToLogin} disabled={loading}>
+          Login here
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 

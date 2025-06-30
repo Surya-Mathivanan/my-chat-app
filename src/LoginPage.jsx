@@ -5,7 +5,7 @@ import { auth } from "./Firebase";
 const LoginPage = ({ onLogin, onSwitchToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Add this line
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -26,12 +26,9 @@ const LoginPage = ({ onLogin, onSwitchToRegister }) => {
         email,
         password
       );
-      console.log("User logged in successfully:", userCredential.user);
       onLogin({ email, uid: userCredential.user.uid });
     } catch (error) {
-      console.error("Login error:", error);
       let errorMessage = "Login failed. Please try again.";
-
       switch (error.code) {
         case "auth/user-not-found":
           errorMessage = "No account found with this email.";
@@ -48,7 +45,6 @@ const LoginPage = ({ onLogin, onSwitchToRegister }) => {
         default:
           errorMessage = error.message;
       }
-
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -56,103 +52,53 @@ const LoginPage = ({ onLogin, onSwitchToRegister }) => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        <h2 className="chat-header">Login</h2>
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            padding: "20px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "15px",
-          }}
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="title">Login</div>
+      {error && <div className="error-message">{error}</div>}
+
+      <label>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+      </label>
+
+      <label>
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className="input"
+          disabled={loading}
+        />
+        <button
+          type="button"
+          className="password-toggle-btn"
+          onClick={() => setShowPassword((v) => !v)}
+          tabIndex={-1}
         >
-          {error && (
-            <div
-              style={{
-                color: "#f44336",
-                backgroundColor: "#ffebee",
-                padding: "10px",
-                borderRadius: "5px",
-                fontSize: "14px",
-              }}
-            >
-              {error}
-            </div>
-          )}
+          {showPassword ? "Hide" : "Show"}
+        </button>
+      </label>
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="chat-input"
-            style={{ margin: "0" }}
-            disabled={loading}
-          />
+      <button type="submit" className="submit" disabled={loading}>
+        {loading ? "Logging in..." : "Login"}
+      </button>
 
-          <div style={{ position: "relative" }}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="chat-input"
-              style={{ margin: "0", paddingRight: "40px" }}
-              disabled={loading}
-            />
-            <button
-              type="button"
-              className="password-toggle-btn"
-              onClick={() => setShowPassword((v) => !v)}
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                color: "#888",
-                fontSize: "14px",
-                padding: 0,
-              }}
-              tabIndex={-1}
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
-
-          <button type="submit" className="send-button" disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </button>
-
-          <div style={{ textAlign: "center", marginTop: "10px" }}>
-            <span style={{ color: "#666", fontSize: "14px" }}>
-              Don't have an account?{" "}
-            </span>
-            <button
-              type="button"
-              onClick={onSwitchToRegister}
-              disabled={loading}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#4CAF50",
-                cursor: "pointer",
-                fontSize: "14px",
-                textDecoration: "underline",
-              }}
-            >
-              Register here
-            </button>
-          </div>
-        </form>
+      <div className="signin">
+        Don't have an account?{" "}
+        <button type="button" onClick={onSwitchToRegister} disabled={loading}>
+          Register here
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 
