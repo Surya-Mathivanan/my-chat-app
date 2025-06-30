@@ -9,7 +9,11 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://my-chat-app-v1.netlify.app/",
+    origin: [
+      "https://my-chat-app-v1.netlify.app",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ],
     methods: ["GET", "POST"],
   },
 });
