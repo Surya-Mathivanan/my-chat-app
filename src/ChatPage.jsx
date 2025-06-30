@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import Message from "./Message";
 
-const socket = io("https://my-chat-app-v2.onrender.com/");
+const socket = io("https://my-chat-app-v2.onrender.com");
 
 const ChatPage = ({ user }) => {
   const [input, setInput] = useState("");
@@ -52,7 +52,7 @@ const ChatPage = ({ user }) => {
         marginTop: "5%",
       }}
     >
-      <div className="title">Chat Room</div>
+      <div className="title">💬 Chat Room</div>
       <div className="message-list" style={{ height: 350, marginBottom: 10 }}>
         {messages.map((msg, index) => (
           <Message key={index} message={msg} isOwn={msg.user === user.name} />

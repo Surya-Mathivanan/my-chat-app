@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://my-chat-app-sand-phi.vercel.app/"],
+    origin: ["http://localhost:5173", "https://my-chat-app-v1.onrender.com"],
     methods: ["GET", "POST"],
   },
 });
