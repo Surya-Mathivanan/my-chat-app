@@ -3,14 +3,6 @@
 A real-time chat application built with **React** (Vite), **Firebase Authentication**, and **Socket.IO** (Node.js/Express backend).
 
 ---
-
-## Live:
- - netlify : https://my-chat-app-v1.netlify.app/
- - Vercel : https://my-chat-app-sand-phi.vercel.app/
- - Render : https://my-chat-app-v2.onrender.com
-
----
-
 ## Features
 
 - 🔒 **User Authentication** (Register/Login with Firebase)
@@ -19,6 +11,14 @@ A real-time chat application built with **React** (Vite), **Firebase Authenticat
 - 👤 **User Profile**: Name, Gender, Date of Birth
 - 🌙 **Dark/Light Mode** (via system preference)
 - ⚡ **Fast Development** with Vite
+---
+
+## Live:
+ - netlify : https://my-chat-app-v1.netlify.app/
+ - Vercel : https://my-chat-app-sand-phi.vercel.app/
+ - Render : https://my-chat-app-v2.onrender.com
+
+
 
 ---
 
@@ -100,7 +100,7 @@ my-chat-app/
 
 ## Screenshots
 
-> _Add screenshots of your app here!_
+
 
 ---
 
