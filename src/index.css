@@ -356,14 +356,15 @@ input[type="date"].chat-input {
   outline: none;
   background-color: royalblue;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   color: #ffffff;
   font-size: 16px;
   transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .submit:hover {
-  background-color: rgb(56, 90, 194);
+  background-color: rgb(56, 150, 194);
 }
 
 /* Animations */
