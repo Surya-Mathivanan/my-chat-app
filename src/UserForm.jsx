@@ -42,7 +42,7 @@ const UserForm = ({ onSubmit }) => {
           type="date"
           value={dob}
           onChange={(e) => setDob(e.target.value)}
-          required
+          
           className="input"
         />
       </label>

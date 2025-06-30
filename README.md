@@ -1,12 +1,110 @@
-# React + Vite
+# My Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time chat application built with **React** (Vite), **Firebase Authentication**, and **Socket.IO** (Node.js/Express backend).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- 🔒 **User Authentication** (Register/Login with Firebase)
+- 💬 **Real-time Chat** using Socket.IO
+- 🎨 **Modern Responsive UI** (with mobile support)
+- 👤 **User Profile**: Name, Gender, Date of Birth
+- 🌙 **Dark/Light Mode** (via system preference)
+- ⚡ **Fast Development** with Vite
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- **Frontend:** React, Vite, CSS
+- **Backend:** Node.js, Express, Socket.IO
+- **Auth:** Firebase Authentication
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/my-chat-app.git
+cd my-chat-app
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up Firebase
+
+- Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+- Enable **Email/Password Authentication**
+- Copy your Firebase config to `src/Firebase.jsx`
+
+### 4. Start the backend server
+
+```bash
+npm run server
+# or
+node server.js
+```
+
+### 5. Start the frontend (Vite)
+
+```bash
+npm run dev
+```
+
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Deployment
+
+- **Frontend:** Deploy `dist/` to [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/)
+- **Backend:** Deploy `server.js` to [Render](https://render.com/) or [Heroku](https://heroku.com/)
+
+---
+
+## Project Structure
+
+```
+my-chat-app/
+├── public/
+├── src/
+│   ├── App.jsx
+│   ├── ChatPage.jsx
+│   ├── LoginPage.jsx
+│   ├── RegisterPage.jsx
+│   ├── UserForm.jsx
+│   ├── Message.jsx
+│   ├── Firebase.jsx
+│   └── index.css
+├── server.js
+├── package.json
+└── README.md
+```
+
+---
+
+## Screenshots
+
+> _Add screenshots of your app here!_
+
+---
+
+## License
+
+MIT
+
+---
+
+## Credits
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Firebase](https://firebase.google.com/)
