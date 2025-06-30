@@ -121,7 +121,7 @@ body {
 .other-message {
   background: linear-gradient(135deg, #ffffff, #f5f5f5);
   margin-right: auto;
-  height: 20%;
+  /* height: 20%; */
   border-bottom-left-radius: 5px;
   color: #333333;
   border: 1px solid #e0e0e0;
@@ -135,13 +135,12 @@ body {
 }
 
 .user-label {
-  /* font-size: 0.75rem; */
   color: #666;
-  height: 5px;
-  
   font-weight: 700;
   margin-bottom: 4px;
-  display: block;
+  /* height: 5px;  */
+  /* font-size: 0.75rem; UNCOMMENT if needed */
+  /* display: block; */
 }
 
 .my-message .user-label {
@@ -463,6 +462,7 @@ input[type="date"].chat-input {
     box-shadow: none;
   }
 
+
   .chat-header {
     font-size: 1.1rem;
     padding: 10px;
@@ -476,12 +476,11 @@ input[type="date"].chat-input {
     background-image: url(../public/bg1.jpeg);
    
   }
-  .message-list{
-    background-image: url(../public/bg1.jpeg);
-  }
+
   
   .userform{
-    top: 20px;
+    top: 50px;
+    background: #051427;
   }
   .message-bubble {
     max-width: 90vw;
