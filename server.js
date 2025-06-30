@@ -9,7 +9,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://my-chat-app-sand-phi.vercel.app/"],
+    origin: ["http://localhost:5173", "http://localhost:5174"],
     methods: ["GET", "POST"],
   },
 });
@@ -24,6 +24,10 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
+});
+
+app.get("/", (req, res) => {
+  res.send("Socket.IO server is running.");
 });
 
 server.listen(3000, () =>
