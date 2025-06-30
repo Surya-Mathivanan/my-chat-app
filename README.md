@@ -4,6 +4,13 @@ A real-time chat application built with **React** (Vite), **Firebase Authenticat
 
 ---
 
+## Live:
+ - netlify : https://my-chat-app-v1.netlify.app/
+ - Vercel : https://my-chat-app-sand-phi.vercel.app/
+ - Render : https://my-chat-app-v2.onrender.com
+
+---
+
 ## Features
 
 - 🔒 **User Authentication** (Register/Login with Firebase)
@@ -28,7 +35,7 @@ A real-time chat application built with **React** (Vite), **Firebase Authenticat
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/my-chat-app.git
+git clone https://github.com/surya-mathivanan/my-chat-app.git
 cd my-chat-app
 ```
 
