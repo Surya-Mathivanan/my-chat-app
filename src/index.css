@@ -465,8 +465,9 @@ input[type="date"].chat-input {
   }
 
   .form {
+   
     margin-left: 5%;
-    margin-top: -10%;
+    margin-top: -30%;
   }
   .title {
     font-size: 24px;
