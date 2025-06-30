@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import Message from "./Message";
 
-const socket = io("http://localhost:3000");
+const socket = io("https://my-chat-app-v2.onrender.com/");
 
 const ChatPage = ({ user }) => {
   const [input, setInput] = useState("");
