@@ -100,7 +100,9 @@ my-chat-app/
 
 ## Screenshots
 
-
+![Image](https://github.com/user-attachments/assets/cb7167cb-82f8-4156-89bb-8755843d8ec1)
+![Image](https://github.com/user-attachments/assets/d0889334-e2cc-4c7b-8f2b-11f2b84b230d)
+![Image](https://github.com/user-attachments/assets/7be17d2f-b2f1-49a4-86d1-0aabecb98dcb)
 
 ---
 
